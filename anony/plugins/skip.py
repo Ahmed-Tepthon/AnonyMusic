@@ -1,15 +1,12 @@
-# Copyright (c) 2025 AnonymousX1025
-# Licensed under the MIT License.
-# This file is part of AnonXMusic
-
-
 from pyrogram import filters, types
 
 from anony import anon, app, db, lang
 from anony.helpers import can_manage_vc
 
 
-filters.command(["skip", "تخطي"], prefixes=["/", ""]) & filters.group & ~app.bl_users)
+@app.on_message(
+    filters.command(["skip", "تخطي"], prefixes=["/", ""]) & filters.group & ~app.bl_users
+)
 @lang.language()
 @can_manage_vc
 async def _skip(_, m: types.Message):
