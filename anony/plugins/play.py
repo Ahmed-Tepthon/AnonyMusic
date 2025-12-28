@@ -2,10 +2,6 @@
 # Licensed under the MIT License.
 # This file is part of AnonXMusic
 
-Licensed under the MIT License.
-
-This file is part of AnonXMusic
-
 from pathlib import Path
 
 from pyrogram import filters, types
