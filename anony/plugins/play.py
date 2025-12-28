@@ -11,12 +11,12 @@ from anony.helpers import buttons, utils
 from anony.helpers._play import checkUB
 
 def playlist_to_queue(chat_id: int, tracks: list) -> str:
-text = "<blockquote expandable>"
-for track in tracks:
-pos = queue.add(chat_id, track)
-text += f"<b>{pos}.</b> {track.title}\n"
-text = text[:1948] + "</blockquote>"
-return text
+    text = "<blockquote expandable>"
+    for track in tracks:
+        pos = queue.add(chat_id, track)
+        text += f"<b>{pos}.</b> {track.title}\n"
+    text = text[:1948] + "</blockquote>"
+    return text
 
 @app.on_message(
 filters.command(
@@ -29,18 +29,18 @@ prefixes=["/", ""]  # السماح بوجود / أو بدون /
 @lang.language()
 @checkUB
 async def play_hndlr(
-_,
-m: types.Message,
-force: bool = False,
-m3u8: bool = False,
-video: bool = False,
-url: str = None,
+    _,
+    m: types.Message,
+    force: bool = False,
+    m3u8: bool = False,
+    video: bool = False,
+    url: str = None,
 ) -> None:
-sent = await m.reply_text(m.lang["play_searching"])
-file = None
-mention = m.from_user.mention
-media = tg.get_media(m.reply_to_message) if m.reply_to_message else None
-tracks = []
+    sent = await m.reply_text(m.lang["play_searching"])
+    file = None
+    mention = m.from_user.mention
+    media = tg.get_media(m.reply_to_message) if m.reply_to_message else None
+    tracks = []
 
 if url:  
     if "playlist" in url:  
